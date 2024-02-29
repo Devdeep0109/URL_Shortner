@@ -1,0 +1,81 @@
+
+what we are making???????????
+First make a post request to make url shorter 
+Then make a get request to redirect it to  original URl
+Then make a get request : URL - "/analytics/:id"  to get the no. of clicks on a particular site. 
+
+How we are making???
+
+npm init -> npm install express , mongoose ,dotenv
+then make a file index.js
+then make routes 1....
+1.1 make MVC...
+1.2 make connection to database
+1.3 make models for these and make schema of database inside these...
+1.4 make routes -> controllers -> pass that route in index.js -> make a middleware(to convert into json format)
+1.5 make a GET request route
+1.6 again make a GET request "/analytics/:id" (( index.js ->routes-> controller))
+
+........................................................................................
+MAKE A FRONTEND FOR THESE 
+1.1 install Ejs
+1.2 specify the displayEngine and views location in index.js.
+1.3 Make a folder name : views (store all ejs files i.e html files.) 
+1.4 Make a static Router file in routes.
+1.5 make a form in home page
+1.6 post the original details to "/url" route (backend) 
+1.7 "/url" route return home page itself with the "id" which contains shortUrl;
+1.8 show url.
+1.9 show no. of clicks of all url.
+1.10 "staticRouter"  ->home.ejs m display krareyege.
+
+..............................................................
+1 .Auntentication  (STATEFULL)
+
+1.1 first we make a userSchema in "models"
+1.2models - userSchema -> routes - user.js -> controller - user.js  ->index.js
+1.3 import routes from rotes/user then make route "/"
+1.4 make a login route 
+user route(login) -> controller(user(handlelogin)) -> views(login.ejs) -> static Routes m pass 
+1.5 login.ejs ko post kiye -> /user/login(login route->handlelogin) -> after checking redirecting to -> "/ " i.e. home page using ejs.
+1.7 import uuid file from npm package (USAGE: CREATING LONG ID)
+1.6 creating a session key using uuid in controller -> user ->handlelogin
+1.7 cerate a new folder name services/auth.js 
+1.8 import function from services (auth.js) to controller(user.js)
+1.9 create a midddleware(which restrict unaunthenticated user to go to home page)
+1.10 folder(middleware) ->auth.js
+1.11 import package cookie-parser to use cookie
+1.12 go to index.js  
+
+.............................................................
+2 .Auntentication  (STATELESS)
+2.1 Go to services -> auth
+2.2 then go to controller(user)
+
+
+
+
+
+
+
+
+
+
+Error that i got while doing:
+D:\Wb_Development\NodeJs\project_02_url_shortener\node_modules\mongodb\lib\operations\insert.js:48
+            throw new error_1.MongoServerError(res.writeErrors[0]);
+                  ^
+
+MongoServerError: E11000 duplicate key error collection: test.urls index: ShortId_1 dup key: { ShortId: null }  
+    at InsertOneOperation.execute (D:\Wb_Development\NodeJs\project_02_url_shortener\node_modules\mongodb\lib\operations\insert.js:48:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async executeOperationAsync (D:\Wb_Development\NodeJs\project_02_url_shortener\node_modules\mongodb\lib\operations\execute_operation.js:106:16) {
+  index: 0,
+  code: 11000,
+  keyPattern: { ShortId: 1 },
+  keyValue: { ShortId: null },
+  [Symbol(errorLabels)]: Set(0) {}
+}
+
+HOW I RESOLVE:
+Automatically gone on saving it.
